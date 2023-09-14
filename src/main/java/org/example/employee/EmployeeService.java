@@ -2,9 +2,8 @@ package org.example.employee;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class EmployeeService {
+class EmployeeService {
     private final EmployeeStore store;
 
     protected EmployeeService() {
