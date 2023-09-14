@@ -29,15 +29,17 @@ public class EmployeeController {
         Employee old = employeeService.getEmployee(editedEmployee.getId());
         if(old != null)
             employeeService.addEmployee(editedEmployee);
-        throw new EmployeeNotFoundException(editedEmployee.getId());
+        else
+            throw new EmployeeNotFoundException(editedEmployee.getId());
     }
 
     public void deleteEmployee(@NonNull Long id) throws EmployeeNotFoundException {
         Employee toDelete = employeeService.getEmployee(id);
-        if(toDelete != null) {
+        if(toDelete != null)
             employeeService.deleteEmployee(id);
-        }
-        throw new EmployeeNotFoundException(id);
+        else
+            throw new EmployeeNotFoundException(id);
+
     }
 
     public List<Employee> listEmployees() {
