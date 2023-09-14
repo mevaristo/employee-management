@@ -14,4 +14,13 @@ public class Employee {
     private Float wage;
     private String phoneNumber;
     private String address;
+
+    public String toString() {
+        return "ID: " + id +
+                "\nName: " + name +
+                "\nDesignation: " + designation +
+                "\nWage: " + wage +
+                "\nPhone number: " + phoneNumber +
+                "\nAddress: " + address;
+    }
 }
