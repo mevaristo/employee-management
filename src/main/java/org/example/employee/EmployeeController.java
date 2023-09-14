@@ -3,16 +3,18 @@ package org.example.employee;
 import lombok.NonNull;
 
 import java.util.List;
-import java.util.Optional;
 
-public class EmployeeControler {
+public class EmployeeController {
     private final EmployeeService employeeService;
 
-    public EmployeeControler() {
+    public EmployeeController() {
         employeeService = new EmployeeService();
     }
 
-    public void addEmployee(@NonNull Employee employee) {
+    public void addEmployee(@NonNull Employee employee) throws EmployeeAlreadyExistException {
+        Employee e = employeeService.getEmployee(employee.getId());
+        if(e != null)
+            throw new EmployeeAlreadyExistException(employee.getId());
         employeeService.addEmployee(employee);
     }
 
@@ -30,7 +32,7 @@ public class EmployeeControler {
         throw new EmployeeNotFoundException(editedEmployee.getId());
     }
 
-    public void deleteEmployee(@NonNull Long id) {
+    public void deleteEmployee(@NonNull Long id) throws EmployeeNotFoundException {
         Employee toDelete = employeeService.getEmployee(id);
         if(toDelete != null) {
             employeeService.deleteEmployee(id);
